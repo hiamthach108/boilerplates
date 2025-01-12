@@ -1,0 +1,13 @@
+export enum AttendeeStatus {
+  PENDING = "PENDING",
+  CONFIRMED = "CONFIRMED",
+  WAITLIST = "WAITLIST",
+  CANCELLED = "CANCELLED",
+}
+
+export enum EventStatus {
+  ACTIVE = "ACTIVE",
+  SUSPENDED = "SUSPENDED",
+  CANCELLED = "CANCELLED",
+  COMPLETED = "COMPLETED",
+}
