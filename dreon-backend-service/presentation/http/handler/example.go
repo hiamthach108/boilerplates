@@ -3,7 +3,7 @@ package handler
 import (
 	"github.com/hiamthach108/dreon-backend-service/internal/aggregate"
 	"github.com/hiamthach108/dreon-backend-service/internal/service"
-	"github.com/hiamthach108/dreon-backend-service/pkg/logger"
+	"github.com/hiamthach108/dreon-sdk/logger"
 	"github.com/labstack/echo/v4"
 )
 

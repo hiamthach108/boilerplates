@@ -5,7 +5,7 @@ import (
 
 	"github.com/hiamthach108/dreon-backend-service/config"
 	"github.com/hiamthach108/dreon-backend-service/internal/model"
-	"github.com/hiamthach108/dreon-backend-service/pkg/logger"
+	"github.com/hiamthach108/dreon-sdk/logger"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

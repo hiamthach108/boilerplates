@@ -7,9 +7,9 @@ import (
 
 	"github.com/hiamthach108/dreon-backend-service/config"
 	"github.com/hiamthach108/dreon-backend-service/internal/shared/constant"
-	"github.com/hiamthach108/dreon-backend-service/pkg/logger"
 	"github.com/hiamthach108/dreon-backend-service/pkg/validator"
 	"github.com/hiamthach108/dreon-backend-service/presentation/http/handler"
+	"github.com/hiamthach108/dreon-sdk/logger"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"go.uber.org/fx"

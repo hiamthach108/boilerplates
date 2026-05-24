@@ -6,10 +6,10 @@ import (
 	"strings"
 
 	"github.com/hiamthach108/dreon-backend-service/internal/aggregate"
-	"github.com/hiamthach108/dreon-backend-service/internal/errorx"
 	"github.com/hiamthach108/dreon-backend-service/internal/model"
 	"github.com/hiamthach108/dreon-backend-service/internal/repository"
 	"github.com/hiamthach108/dreon-backend-service/pkg/validator"
+	"github.com/hiamthach108/dreon-sdk/errorx"
 )
 
 type IExampleSvc interface {

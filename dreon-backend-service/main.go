@@ -6,10 +6,10 @@ import (
 	"github.com/hiamthach108/dreon-backend-service/internal/service"
 	"github.com/hiamthach108/dreon-backend-service/pkg/cache"
 	"github.com/hiamthach108/dreon-backend-service/pkg/database"
-	"github.com/hiamthach108/dreon-backend-service/pkg/logger"
 	grpcserver "github.com/hiamthach108/dreon-backend-service/presentation/grpc"
 	"github.com/hiamthach108/dreon-backend-service/presentation/http"
 	"github.com/hiamthach108/dreon-backend-service/presentation/http/handler"
+	"github.com/hiamthach108/dreon-sdk/logger"
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
 )
@@ -22,7 +22,7 @@ func main() {
 		fx.Provide(
 			// Core
 			config.NewAppConfig,
-			logger.NewLogger,
+			newAppLogger,
 			cache.NewAppCache,
 			database.NewDbClient,
 			http.NewHttpServer,
@@ -44,4 +44,11 @@ func main() {
 	)
 
 	app.Run()
+}
+
+func newAppLogger(config *config.AppConfig) (logger.ILogger, error) {
+	return logger.NewLogger(logger.Config{
+		Service: config.App.Name,
+		Level:   config.Logger.Level,
+	})
 }

@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/hiamthach108/dreon-backend-service/config"
-	"github.com/hiamthach108/dreon-backend-service/pkg/logger"
+	"github.com/hiamthach108/dreon-sdk/logger"
 	"go.uber.org/fx"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
