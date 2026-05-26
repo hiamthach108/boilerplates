@@ -1,16 +1,25 @@
 'use client';
 
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { ConfigProvider } from 'antd';
+import type { ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
 
 import { TOAST_DEFAULT_OPTIONS } from '@/config/helpers/toast.helper';
 
-const AppProvider = ({ children }: { children: React.ReactNode }) => {
+export default function AppProvider({ children }: { children: ReactNode }) {
   return (
-    <>
-      {children}
-      <Toaster {...TOAST_DEFAULT_OPTIONS} />
-    </>
+    <AntdRegistry>
+      <ConfigProvider
+        theme={{
+          token: {
+            borderRadius: 8,
+          },
+        }}
+      >
+        {children}
+        <Toaster {...TOAST_DEFAULT_OPTIONS} />
+      </ConfigProvider>
+    </AntdRegistry>
   );
-};
-
-export default AppProvider;
+}

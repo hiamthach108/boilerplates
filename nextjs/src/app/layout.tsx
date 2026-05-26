@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import type { ReactNode } from 'react';
 
 import MainLayout from '@/components/layout/MainLayout';
 
@@ -7,17 +7,15 @@ import AppProvider from './providers';
 
 import '@/styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
-  title: 'NextJS + Antd Starter',
-  description: 'NextJS + Antd Boilerplate',
+  title: 'Dreon Next.js Starter',
+  description: 'Modern Dreon Next.js boilerplate with Ant Design and Tailwind CSS.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <AppProvider>
           <MainLayout>{children}</MainLayout>
         </AppProvider>

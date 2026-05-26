@@ -1,11 +1,7 @@
 'use client';
 
-import React from 'react';
+import { Button, type ButtonProps } from 'antd';
 
-import { Button, ButtonProps } from 'antd';
-
-const Btn = (props: ButtonProps) => {
-  return <Button {...props}>{props.children}</Button>;
-};
-
-export default Btn;
+export default function Btn({ children, ...props }: ButtonProps) {
+  return <Button {...props}>{children}</Button>;
+}

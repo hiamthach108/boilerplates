@@ -1,16 +1,14 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 
 import Footer from './Footer';
 import Header from './Header';
 
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
+export default function MainLayout({ children }: { children: ReactNode }) {
   return (
-    <main className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <Header />
-      {children}
+      <main className="flex-1">{children}</main>
       <Footer />
-    </main>
+    </div>
   );
-};
-
-export default MainLayout;
+}
