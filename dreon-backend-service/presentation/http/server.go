@@ -3,6 +3,7 @@ package http
 import (
 	"context"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/hiamthach108/dreon-backend-service/config"
@@ -33,19 +34,21 @@ func NewHttpServer(
 	e.Use(requestMetadataMiddleware)
 	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
-			logger.Info(
-				"Request",
-				"ip",
-				c.RealIP(),
-				"method",
-				c.Request().Method,
-				"path",
-				c.Request().URL.Path,
-				"user-agent",
-				c.Request().UserAgent(),
-				"referer",
-				c.Request().Referer(),
-			)
+			if !isHealthcheckPath(c.Request().URL.Path) {
+				logger.Info(
+					"Request",
+					"ip",
+					c.RealIP(),
+					"method",
+					c.Request().Method,
+					"path",
+					c.Request().URL.Path,
+					"user-agent",
+					c.Request().UserAgent(),
+					"referer",
+					c.Request().Referer(),
+				)
+			}
 			return next(c)
 		}
 	})
@@ -100,6 +103,10 @@ func requestMetadataMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 		c.SetRequest(c.Request().WithContext(ctx))
 		return next(c)
 	}
+}
+
+func isHealthcheckPath(path string) bool {
+	return path == "/ping" || strings.HasSuffix(path, "/ping")
 }
 
 func RegisterHooks(lc fx.Lifecycle, server *HttpServer) {
